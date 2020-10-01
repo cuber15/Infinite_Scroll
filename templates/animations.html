@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animations</title>
+    <style>
+        @keyframes move{
+            0%{
+                left: 0%;
+            }
+            50%{
+                left:50%;
+            }
+            100%{
+                left:0%;
+            }
+        }
+        /* @keyframe */
+        h1
+        {
+            position: relative;
+            animation-name: move;
+            animation-duration: 4s;
+            animation-fill-mode: forwards;
+            animation-iteration-count: infinite;
+        }
+    </style>
+    <script>
+        function move()
+        {
+            let element=document.querySelector('h1');
+            if(element.style.animationPlayState=='running')
+            element.style.animationPlayState='paused';
+            else
+            element.style.animationPlayState='running';
+
+        }
+    </script>
+</head>
+<body>
+    <h1>WELCOME</h1>
+    <button onclick="move()">Click Here</button>
+</body>
+</html>

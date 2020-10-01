@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #content{
+        background-color: rgb(79, 192, 79);
+        height: 60px;
+        color: black;
+        font-size: 30px;
+        padding:20px;
+        margin-top:20px;
+    }
+</style>
+<script>
+    let quantity=20;
+    let counter=1;
+    window.onscroll= () => {
+        if(window.innerHeight+window.scrollY>=document.body.offsetHeight)
+        {
+            load();
+        }
+    }
+    
+    document.addEventListener('DOMContentLoaded',load)
+    function load(){
+        let start=counter;
+        let end=start+quantity-1;
+        counter=end+1;
+
+        for(let i=start;i<=end;i++)
+        {
+            let element=document.createElement('div')
+            element.id='content';
+            element.innerHTML=`Post #${i}`;
+            document.getElementById('body').appendChild(element);
+        }        
+    }
+</script>
+<body id="body">
+    <h1 style="text-align: center;"> HELLO </h1>        
+</body>
+</html>

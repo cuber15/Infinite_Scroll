@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* @keyframes hide
+        {
+            0%{
+                opacity: 1;
+                padding:20px;
+                height: 100%;
+                line-height: 100%;
+                margin:20px;
+            }
+            75%
+            {
+                opacity:1;
+                padding:20px;
+                height: 100%;
+                line-height: 100%;
+                margin:20px;
+            }
+            100%
+            {
+                opacity: 0;
+                padding:0px;
+                height:0%;
+                line-height: 0%;
+                margin:0px;
+                /* color:red; */
+            /* } */
+        /* } */
+        #content{
+        background-color: rgb(79, 192, 79);
+        height: 60px;
+        color: black;
+        font-size: 30px;
+        padding:20px;
+        margin-top:20px;
+    }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+    
+        const quantity = 20;
+        let counter = 1;
+
+        document.addEventListener('DOMContentLoaded', load);                                
+
+        window.onscroll= () =>{
+            if(window.innerHeight+window.scrollY>=document.body.offsetHeight)
+            {
+                load();
+            }
+        }
+    //     addEventListener('click',event =>{
+    //        let element=event.target;
+    //        if(element.class="hide")
+    //        {
+    //             element.parentElement.style.animationPlayState='running';
+    //             addEventListener('animationend',function(){
+    //                 element.parentElement.remove();
+    //             })
+    //        }
+    //    })
+        function load() {
+            let start=counter;
+            let end=start+quantity-1;
+            counter=end+1;
+            fetch(`/postrequest/?start=${start}&end=${end}`)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data.length);
+                    for (let i = 0; i < data.length; i++) {
+                        addtodiv(data[i]);
+                    }
+                })
+        }
+        function addtodiv(str) {            
+            let element=document.createElement('div')
+            element.id='content';
+            element.innerHTML=`${str}`;
+            document.getElementById('body').appendChild(element);
+        }
+    </script>
+</head>
+
+<body id="body">    
+    <h1 style="text-align: center;">HELLO</h1>
+</body>
+
+</html>
