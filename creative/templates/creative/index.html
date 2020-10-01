@@ -21,10 +21,16 @@
     margin-top:10px;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     text-align: center;       
-    }  
+    }
+    body
+    {
+        background: url('https://picsum.photos/2500/1600');
+
+        overflow: scroll;
+    }
     .card
     {
-        margin:auto;       
+        margin:auto;        
         width: 500px; 
         text-align: center;
     }
@@ -57,13 +63,18 @@
         var number=0;
         function load(data)
         {
+          console.log(number);
+          let image=document.createElement('img')
+          image.src=`https://picsum.photos/id/${number}/900`;
+          image.className='card-img-top';
           let text=document.createElement('div');
-          text.className='card-body'
+          text.className='card-body'          
           let para=document.createElement('p')
           para.id='new';
           para.className='card-text';
           para.innerHTML=`<b style="font-size:20px">POSTS #${number}</b><br> ${data}`;
           text.appendChild(para);
+          document.getElementById('heading').appendChild(image);
           document.getElementById('heading').appendChild(text);
           document.getElementById('heading').style.width=`px`;
           console.log(data)
