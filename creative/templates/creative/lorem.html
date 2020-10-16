@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LoremText</title>
+</head>
+<body>
+    <form  action="{%url 'loremtext'%}" method="POST">{%csrf_token%}
+        <h2 style="text-align: center;">Enter the number of words you want to print</h2>
+        <div style="text-align: center;">
+            <input type="number" name="words">
+            <input type="submit" value="Submit">  
+        </div>
+    </form>
+    <button onclick="Copy()" id="copy">
+        Copy
+    </button>
+    <div id="div" style=" text-align: center; padding:20px; margin-top: 20px; border: 2px solid black;">
+        {% if text != "nothing" %}
+            {{text}}
+        {%endif%}
+    </div>
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded',func);
+    function func()
+    {
+        let div=document.getElementById('div');
+        if("{{text}}" == "nothing")
+        {
+            div.style.display="none";
+        }
+        else{
+            div.style.display="show";
+        }
+
+    }
+
+    function Copy()
+    {
+        let text=document.getElementById('div').innerText;
+        console.log(text);
+        let temp = document.createElement("INPUT");
+        temp.value = text;
+        document.body.appendChild(temp);
+        temp.select();
+        temp.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+        temp.remove();
+    }
+</script>
+</html>
