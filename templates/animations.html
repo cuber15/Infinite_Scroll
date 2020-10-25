@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animations</title>
     <style>
+/*         Key frames and Animations  */
+        h1
+        {
+            position: relative;
+            animation-name: move;
+            animation-duration: 4s;
+            animation-fill-mode: backwards;
+            animation-iteration-count: 10;
+        }
+        
         @keyframes move{
             0%{
                 left: 0%;
@@ -15,16 +25,7 @@
             100%{
                 left:0%;
             }
-        }
-        /* @keyframe */
-        h1
-        {
-            position: relative;
-            animation-name: move;
-            animation-duration: 4s;
-            animation-fill-mode: forwards;
-            animation-iteration-count: infinite;
-        }
+        }        
     </style>
     <script>
         function move()
@@ -39,7 +40,7 @@
     </script>
 </head>
 <body>
-    <h1>WELCOME</h1>
+    <h1>WELCOME TO THE SHOW</h1>
     <button onclick="move()">Click Here</button>
 </body>
 </html>
